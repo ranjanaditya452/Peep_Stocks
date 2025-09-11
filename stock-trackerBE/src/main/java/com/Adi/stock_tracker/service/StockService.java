@@ -18,8 +18,12 @@ public class StockService {
     }
 
     public StockResponse getStockFormSymbol(String stockSymbol) {
-        AlphaVantageResponse alphaVantageResponse = stockClient.getStockQuote(stockSymbol);
+        final AlphaVantageResponse alphaVantageResponse = stockClient.getStockQuote(stockSymbol);
 
-        return new StockResponse(alphaVantageResponse.globalQuote().symbol().)
+        return StockResponse.builder()
+                .symbol(alphaVantageResponse.globalQuote().symbol())
+                .price(Double.parseDouble(alphaVantageResponse.globalQuote().price()))
+                .lastUpdated(alphaVantageResponse.globalQuote().latestDay())
+                .build();
     }
 }
