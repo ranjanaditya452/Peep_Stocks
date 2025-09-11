@@ -1,6 +1,7 @@
 package com.Adi.stock_tracker.service;
 
 import com.Adi.stock_tracker.client.StockClient;
+import com.Adi.stock_tracker.dto.AlphaVantageResponse;
 import com.Adi.stock_tracker.dto.StockResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class StockService {
     }
 
     public StockResponse getStockFormSymbol(String stockSymbol) {
-        stockClient.getStockQuote(stockSymbol);
+        AlphaVantageResponse alphaVantageResponse = stockClient.getStockQuote(stockSymbol);
 
-        return new StockResponse();
+        return new StockResponse(alphaVantageResponse.globalQuote().symbol().)
     }
 }
