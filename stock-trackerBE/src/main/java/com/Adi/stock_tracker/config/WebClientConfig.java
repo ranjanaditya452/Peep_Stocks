@@ -8,9 +8,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class WebClientConfig {
 
-    @Bean
-    public WebClient webClient(WebClient.Builder builder)
-    {
+    @Value("${alphaVantage.url}")
+    private String alphaVantageUrl;
 
+    @Bean
+    public WebClient webClient(WebClient.Builder builder )
+    {
+            return builder.baseUrl(alphaVantageUrl).build();
     }
 }
