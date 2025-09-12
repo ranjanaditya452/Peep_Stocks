@@ -1,6 +1,7 @@
 package com.Adi.stock_tracker.controller;
 
 
+import com.Adi.stock_tracker.dto.StockOverViewResponse;
 import com.Adi.stock_tracker.dto.StockResponse;
 import com.Adi.stock_tracker.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,12 @@ public class StockController {
     public StockResponse getStock(@PathVariable String stockSymbol)
     {
         return stockService.getStockFormSymbol(stockSymbol.toUpperCase());
+    }
+
+    @GetMapping("/{stockSymbol}/overview")
+    public StockOverViewResponse getStockOverview(@PathVariable String stockSymbol)
+    {
+        return stockService.getStockOverview(stockSymbol.toUpperCase());
     }
 
 
