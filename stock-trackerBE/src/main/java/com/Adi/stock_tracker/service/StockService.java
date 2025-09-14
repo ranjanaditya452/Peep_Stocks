@@ -20,7 +20,7 @@ public class StockService {
     }
 
     //Single ticker info
-    public StockResponse getStockFrommSymbol(final String stockSymbol) {
+    public StockResponse getStockFromSymbol(final String stockSymbol) {
         final AlphaVantageResponse alphaVantageResponse = stockClient.getStockQuote(stockSymbol);
 
         return StockResponse.builder()
@@ -56,5 +56,9 @@ public class StockService {
                     );
                 })
                 .collect(Collectors.toList());
+    }
+
+    public FavoriteStock addFavorite(final String symbol) {
+        StockResponse stockResponse=getStockFromSymbol(symbol);
     }
 }

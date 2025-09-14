@@ -1,6 +1,7 @@
 package com.Adi.stock_tracker.controller;
 
 
+import com.Adi.stock_tracker.dto.FavoriteStockRequest;
 import com.Adi.stock_tracker.dto.StockDailyResponse;
 import com.Adi.stock_tracker.dto.StockOverViewResponse;
 import com.Adi.stock_tracker.dto.StockResponse;
@@ -26,7 +27,7 @@ public class StockController {
     @GetMapping("/{stockSymbol}")
     public StockResponse getStock(@PathVariable String stockSymbol)
     {
-        return stockService.getStockFrommSymbol(stockSymbol.toUpperCase());
+        return stockService.getStockFromSymbol(stockSymbol.toUpperCase());
     }
 
     @GetMapping("/{stockSymbol}/overview")
@@ -42,5 +43,9 @@ public class StockController {
     }
 
     @PostMapping("/favorites")
-    public ResponseEntity<FavoriteStock> saveFavoriteStock(@RequestBody FavoriteStock request)
+    public ResponseEntity<FavoriteStock> saveFavoriteStock(@RequestBody FavoriteStockRequest request)
+    {
+        final FavoriteStock favoriteStock = stockService.addFavorite(request.getSymbol());
+        return ResponseEntity.ok(favoriteStock);
+    }
 }
