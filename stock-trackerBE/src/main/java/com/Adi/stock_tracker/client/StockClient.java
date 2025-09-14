@@ -1,5 +1,6 @@
 package com.Adi.stock_tracker.client;
 
+import com.Adi.stock_tracker.dto.AlphaVantageDailyResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageResponse;
 import com.Adi.stock_tracker.dto.StockOverViewResponse;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,18 @@ public class StockClient {
                 .build())
                 .retrieve()
                 .bodyToMono(StockOverViewResponse.class)
+                .block();
+    }
+
+    public AlphaVantageDailyResponse getDailyStock (String stockSymbol)
+    {
+        return webClient.get().uri(uriBuilder -> uriBuilder
+                .queryParam("function","TIME_SERIES_DAILY")
+                .queryParam("symbol",stockSymbol)
+                .queryParam("apikey",vantageAPIKey)
+                .build())
+                .retrieve()
+                .bodyToMono(AlphaVantageDailyResponse.class)
                 .block();
     }
 }
