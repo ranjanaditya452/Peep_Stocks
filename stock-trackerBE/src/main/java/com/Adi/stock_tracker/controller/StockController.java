@@ -5,6 +5,7 @@ import com.Adi.stock_tracker.dto.FavoriteStockRequest;
 import com.Adi.stock_tracker.dto.StockDailyResponse;
 import com.Adi.stock_tracker.dto.StockOverViewResponse;
 import com.Adi.stock_tracker.dto.StockResponse;
+import com.Adi.stock_tracker.entity.FavoriteStock;
 import com.Adi.stock_tracker.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,5 +48,12 @@ public class StockController {
     {
         final FavoriteStock favoriteStock = stockService.addFavorite(request.getSymbol());
         return ResponseEntity.ok(favoriteStock);
+    }
+
+    @GetMapping("/favorites")
+    public ResponseEntity<List<StockResponse>> getAllFavStocks()
+    {
+        final List<StockResponse> list = stockService.getEveryFavoriteStock();
+        return ResponseEntity.ok(list);
     }
 }

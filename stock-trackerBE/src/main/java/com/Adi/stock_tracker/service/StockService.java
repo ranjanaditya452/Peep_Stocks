@@ -2,7 +2,12 @@ package com.Adi.stock_tracker.service;
 
 import com.Adi.stock_tracker.client.StockClient;
 import com.Adi.stock_tracker.dto.*;
+import com.Adi.stock_tracker.entity.FavoriteStock;
+import com.Adi.stock_tracker.exceptions.FavoriteAlreadyExistsException;
+import com.Adi.stock_tracker.repository.FavoriteStockRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,14 +17,18 @@ import java.util.stream.Collectors;
 public class StockService {
 
     private StockClient stockClient;
+    private FavoriteStockRepository favoriteStockRepository;
 
     @Autowired
-    public StockService(final StockClient stockClient)
+    public StockService(final StockClient stockClient,
+                        final FavoriteStockRepository favoriteStockRepository)
     {
         this.stockClient=stockClient;
+        this.favoriteStockRepository=favoriteStockRepository;
     }
 
-    //Single ticker info
+    //Single ticker info (StockResponse)
+    @Cacheable(value = "stocks", key = "#stockSymbol")
     public StockResponse getStockFromSymbol(final String stockSymbol) {
         final AlphaVantageResponse alphaVantageResponse = stockClient.getStockQuote(stockSymbol);
 
@@ -58,7 +67,26 @@ public class StockService {
                 .collect(Collectors.toList());
     }
 
+    //Post method to add a stock symbol to favorite db
+    @Transactional
     public FavoriteStock addFavorite(final String symbol) {
-        StockResponse stockResponse=getStockFromSymbol(symbol);
+            if(favoriteStockRepository.existsBySymbol(symbol))
+            {
+                throw new FavoriteAlreadyExistsException(symbol);
+            }
+            FavoriteStock favoriteStock=FavoriteStock.builder()
+                    .symbol(symbol).build();
+
+            return favoriteStockRepository.save(favoriteStock);
+    }
+
+    //Returns stockresponse info as a list on every favorite stock
+    public List<StockResponse> getEveryFavoriteStock() {
+        List<String> allFavs= favoriteStockRepository.getFavoriteStocks();
+
+        return allFavs.stream().map(stockSymbol->
+        {
+           return getStockFromSymbol(stockSymbol);
+        }).collect(Collectors.toList());
     }
 }
