@@ -1,9 +1,9 @@
 import React from 'react'
-import Dashboard from './micro-components/Dashboard'
+import Navbar from './micro-components/Navbar'
 
 const Homepage = () => {
   return (
-    <Dashboard/>
+    <Navbar/>
   )
 }
 
