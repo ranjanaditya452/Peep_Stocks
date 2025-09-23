@@ -5,9 +5,9 @@ const Navbar = () => {
    <div className='flex py-3 pl-16 border-2 border-red-200'>
      <div className='border-r-2 border-gray-300 pr-4'>Peep-Stocks</div>
      <div className='flex justify-between w-100 px-6 border-2 border-red-200 '>
-      <div>Placeholder1</div>
-      <div>Placeholder2</div>
-      <div>Placeholder3</div>
+      <div>Placeholder&nbsp;1</div>
+      <div>Placeholder&nbsp;2</div>
+      <div>Placeholder&nbsp;3</div>
      </div>
      <div className='flex ml-auto pr-10 gap-4'>
       <div className=''>Contact Me</div>
