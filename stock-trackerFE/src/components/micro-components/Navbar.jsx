@@ -2,9 +2,11 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-  <div className='flex flex-col h-screen'>
-   <div className='flex py-3 pl-16 grow-none  border-2 border-red-200'>
-     <div className='border-r-2 border-gray-300 pr-4'>Peep-Stocks</div>
+  //Homepage root div
+  <div className='grid grid-cols-2 grid-rows-2 '>
+    {/* Homepage header */}
+   <div className='col-span-2 flex gap-20 py-3 pl-16 grow-none  '>
+     <div className=' pr-4'>Peep-Stocks</div>
      <div className='flex justify-between w-100 px-6 border-2 border-red-200 '>
       <div>Placeholder&nbsp;1</div>
       <div>Placeholder&nbsp;2</div>
@@ -15,7 +17,8 @@ const Navbar = () => {
       <div>Dashboard</div>
      </div>
    </div>
-   <div className='flex flex-col grow items-center mt-30'>
+   {/*Title Area (left)*/}
+   <div className='flex flex-col border-2 border-red-200'>
     <div className='text-5xl  '>Track it. Scroll it. Save it.</div>
     <div className=''>The open platform to track your stocks</div>
    </div>
