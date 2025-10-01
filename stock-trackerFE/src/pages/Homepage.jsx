@@ -1,0 +1,17 @@
+import React from 'react'
+import Navbar from '../components/Navbar'
+import TitleAreaL from '../components/TitleAreaL'
+import TitleAreaR from '../components/TitleAreaR'
+
+const Homepage = () => {
+  return (
+    <>    
+    <div className='grid grid-cols-2 p-18'>
+      <TitleAreaL/>
+      <TitleAreaR/>
+    </div>
+    </>
+  )
+}
+
+export default Homepage
