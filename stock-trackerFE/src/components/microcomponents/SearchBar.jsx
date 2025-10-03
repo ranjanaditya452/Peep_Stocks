@@ -14,9 +14,9 @@ const SearchBar = () => {
             border-gray-300 focus:border-[rgb(231,170,190)] group-hover:border-[rgb(231,170,190)]
             focus:outline-none bg-gray-100'/>
 
-            <span className='absolute right-3 top-2 flex place-content-center 
-                  w-10 h-10 rounded-full bg-[rgb(223,111,149)] hover:bg-[rgb(227,134,165)] cursor-pointer'>
-                <img src={searchIcon} alt="SearchIcon" className='w-8 h-8 mt-1' /></span>
+            <button className='absolute right-3 top-2 flex place-content-center 
+                  w-10 h-10 rounded-full bg-[rgb(223,111,149)] hover:bg-[rgb(227,134,165)] hover:cursor-pointer'>
+                <img src={searchIcon} alt="SearchIcon" className='w-8 h-8 mt-1' /></button>
         </div>
     </>
   )
