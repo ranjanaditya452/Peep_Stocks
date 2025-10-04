@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchBar from './microcomponents/SearchBar'
 import DayTray from './microcomponents/DayTray'
+import PopularTray from './microcomponents/PopularTray'
 
 const TitleAreaL = () => {
   
@@ -11,6 +12,7 @@ const TitleAreaL = () => {
         <div className='text-3xl'>The one platform to view all your stocks</div>
         <SearchBar/>
         <DayTray/>
+        <PopularTray/>
       </div>
 
     </>
