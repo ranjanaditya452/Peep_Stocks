@@ -2,6 +2,7 @@ package com.Adi.stock_tracker.client;
 
 import com.Adi.stock_tracker.dto.AlphaVantageDailyResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageResponse;
+import com.Adi.stock_tracker.dto.AlphaVantageWeeklyResponse;
 import com.Adi.stock_tracker.dto.StockOverViewResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +15,7 @@ public class StockClient {
 
 
     private final WebClient webClient;
+
 
     @Value("${alpha.vantage.API.key}")
     private String vantageAPIKey;
@@ -52,5 +54,18 @@ public class StockClient {
                 .retrieve()
                 .bodyToMono(AlphaVantageDailyResponse.class)
                 .block();
+    }
+
+    public AlphaVantageWeeklyResponse getWeeklyStocks(String stockSymbol) {
+
+        return webClient.get().uri(uriBuilder -> uriBuilder
+                        .queryParam("function","TIME_SERIES_WEEKLY_ADJUSTED")
+                        .queryParam("symbol",stockSymbol)
+                        .queryParam("apikey",vantageAPIKey)
+                        .build())
+                        .retrieve()
+                        .bodyToMono(AlphaVantageWeeklyResponse.class)
+                        .block();
+
     }
 }

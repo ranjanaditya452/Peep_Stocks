@@ -89,4 +89,22 @@ public class StockService {
            return getStockFromSymbol(stockSymbol);
         }).collect(Collectors.toList());
     }
+
+    public List<StockWeeklyResponse> getStockWeeklyService(String stockSymbol, int weeks) {
+        final AlphaVantageWeeklyResponse alphaVantageWeeklyResponse = stockClient.getWeeklyStocks(stockSymbol);
+
+        return alphaVantageWeeklyResponse.timesSeriesW().entrySet().stream().limit(weeks).map( weekly-> {
+                    String date = weekly.getKey();
+                    var data = weekly.getValue();
+
+                    return new StockWeeklyResponse(
+                            date,
+                            Double.parseDouble(data.open()),
+                            Double.parseDouble(data.close()),
+                            Double.parseDouble(data.high()),
+                            Double.parseDouble(data.low()),
+                            Long.parseLong(data.volume())
+                    );
+                }).collect(Collectors.toList());
+    }
 }

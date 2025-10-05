@@ -43,6 +43,12 @@ public class StockController {
         return stockService.getStockDaily(stockSymbol.toUpperCase(),days);
     }
 
+    @GetMapping("/{stockSymbol}/weekly")
+    public List<StockWeeklyResponse> getStockWeekly(@PathVariable String stockSymbol, @RequestParam(defaultValue = "30")int weeks )
+    {
+        return stockService.getStockWeeklyService(stockSymbol.toUpperCase(),weeks);
+    }
+
     @PostMapping("/favorites")
     public ResponseEntity<FavoriteStock> saveFavoriteStock(@RequestBody FavoriteStockRequest request)
     {
