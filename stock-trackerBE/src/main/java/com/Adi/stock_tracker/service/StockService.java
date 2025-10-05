@@ -102,8 +102,7 @@ public class StockService {
                             Double.parseDouble(data.open()),
                             Double.parseDouble(data.close()),
                             Double.parseDouble(data.high()),
-                            Double.parseDouble(data.low()),
-                            Long.parseLong(data.volume())
+                            Double.parseDouble(data.low())
                     );
                 }).collect(Collectors.toList());
     }

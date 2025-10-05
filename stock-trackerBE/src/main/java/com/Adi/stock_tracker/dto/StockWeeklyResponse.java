@@ -5,7 +5,6 @@ public record StockWeeklyResponse(
         double open,
         double close,
         double high,
-        double low,
-        long volume
+        double low
 ) {
 }

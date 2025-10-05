@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import TitleAreaL from '../components/TitleAreaL'
 import TitleAreaR from '../components/TitleAreaR'
 
