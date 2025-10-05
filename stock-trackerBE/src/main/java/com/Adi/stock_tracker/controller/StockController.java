@@ -46,6 +46,12 @@ public class StockController {
         return stockService.getStockWeeklyService(stockSymbol.toUpperCase(),weeks);
     }
 
+    @GetMapping("/{stockSymbol}/monthly")
+    public List<StockMonthlyResponse> getStocksMonthly(@PathVariable String stockSymbol, @RequestParam(defaultValue = "36")int months)
+    {
+        return stockService.getStockMonthlyService(stockSymbol.toUpperCase(),months);
+    }
+
     @PostMapping("/favorites")
     public ResponseEntity<FavoriteStock> saveFavoriteStock(@RequestBody FavoriteStockRequest request)
     {

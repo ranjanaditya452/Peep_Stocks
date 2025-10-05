@@ -1,9 +1,6 @@
 package com.Adi.stock_tracker.client;
 
-import com.Adi.stock_tracker.dto.AlphaVantageDailyResponse;
-import com.Adi.stock_tracker.dto.AlphaVantageResponse;
-import com.Adi.stock_tracker.dto.AlphaVantageWeeklyResponse;
-import com.Adi.stock_tracker.dto.StockOverViewResponse;
+import com.Adi.stock_tracker.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -66,6 +63,18 @@ public class StockClient {
                         .retrieve()
                         .bodyToMono(AlphaVantageWeeklyResponse.class)
                         .block();
+
+    }
+
+    public AlphaVantageMonthlyResponse getMonthlyStocks(String stockSymbol) {
+
+        return webClient.get().uri(uriBuilder -> uriBuilder
+                .queryParam("function","TIME_SERIES_MONTHLY_ADJUSTED")
+                .queryParam("symbol",stockSymbol)
+                .queryParam("apikey",vantageAPIKey)
+                .build())
+                .retrieve()
+                .bodyToMono((AlphaVantageMonthlyResponse.class)).block();
 
     }
 }

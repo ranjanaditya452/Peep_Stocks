@@ -106,4 +106,24 @@ public class StockService {
                     );
                 }).collect(Collectors.toList());
     }
+
+    public List<StockMonthlyResponse> getStockMonthlyService(String stockSymbol, int months) {
+    AlphaVantageMonthlyResponse alphaVantageMonthlyResponse= stockClient.getMonthlyStocks(stockSymbol);
+
+    return alphaVantageMonthlyResponse.monthlySeries().entrySet().stream().limit(months)
+            .map(entry->
+            {
+                var date = entry.getKey();
+                var data =entry.getValue();
+
+                return new StockMonthlyResponse(
+                        date,
+                        Double.parseDouble(data.open()),
+                        Double.parseDouble(data.close()),
+                        Double.parseDouble(data.high()),
+                        Double.parseDouble(data.low())
+                );
+            }).collect(Collectors.toList());
+
+    }
 }
