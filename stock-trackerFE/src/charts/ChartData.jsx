@@ -28,8 +28,8 @@ ChartJS.register(
 
 
 const ChartData = () => {
-    const [data, setData] = useState(dailyData);
-
+    const [data, setData] = useState([...monthlyStatic].reverse());
+   
     let dataVER= {
         labels: data.map(elem=>elem.date),
         datasets:[
