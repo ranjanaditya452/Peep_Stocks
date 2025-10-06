@@ -1,8 +1,10 @@
 import React from 'react'
+import ChartData from '../charts/ChartData'
 
 const TitleAreaR = () => {
   return (
-    <div>TitleAreaR</div>
+    <div className='w-[100%]'><ChartData/></div>
+   
   )
 }
 

@@ -6,7 +6,7 @@ const Homepage = () => {
 
   return (
     <>    
-    <div className='grid grid-cols-2 p-18'>
+    <div className='grid grid-cols-2 p-15'>
       <TitleAreaL/>
       <TitleAreaR/>
     </div>
