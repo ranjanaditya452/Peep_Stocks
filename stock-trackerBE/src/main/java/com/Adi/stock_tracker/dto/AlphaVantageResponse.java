@@ -8,9 +8,12 @@ public record AlphaVantageResponse(
 ) {
 
         public record GlobalQuote(
-             @JsonProperty("01. symbol") String symbol,
-             @JsonProperty("05. price") String price,
-             @JsonProperty("07. latest trading day") String latestDay
+             @JsonProperty("01. symbol")
+             String symbol,
+             @JsonProperty("05. price")
+             String price,
+             @JsonProperty("07. latest trading day")
+             String latestDay
         ){}
 
 }
