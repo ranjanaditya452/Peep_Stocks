@@ -34,7 +34,7 @@ public class StockController {
         return stockService.getStockOverview(stockSymbol.toUpperCase());
     }
 
-    @GetMapping("/{stockSymbol}/history")
+    @GetMapping("/{stockSymbol}/daily")
     public List<StockDailyResponse> getStockDaily(@PathVariable String stockSymbol, @RequestParam(defaultValue = "30") int days)
     {
         return stockService.getStockDaily(stockSymbol.toUpperCase(),days);
