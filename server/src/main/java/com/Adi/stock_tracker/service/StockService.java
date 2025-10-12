@@ -1,7 +1,15 @@
 package com.Adi.stock_tracker.service;
 
 import com.Adi.stock_tracker.client.StockClient;
-import com.Adi.stock_tracker.dto.*;
+import com.Adi.stock_tracker.dto.AlphaVantageDailyResponse;
+import com.Adi.stock_tracker.dto.AlphaVantageMonthlyResponse;
+import com.Adi.stock_tracker.dto.AlphaVantageResponse;
+import com.Adi.stock_tracker.dto.AlphaVantageWeeklyResponse;
+import com.Adi.stock_tracker.dto.StockDailyResponse;
+import com.Adi.stock_tracker.dto.StockMonthlyResponse;
+import com.Adi.stock_tracker.dto.StockOverViewResponse;
+import com.Adi.stock_tracker.dto.StockResponse;
+import com.Adi.stock_tracker.dto.StockWeeklyResponse;
 import com.Adi.stock_tracker.entity.FavoriteStock;
 import com.Adi.stock_tracker.exceptions.FavoriteAlreadyExistsException;
 import com.Adi.stock_tracker.repository.FavoriteStockRepository;
