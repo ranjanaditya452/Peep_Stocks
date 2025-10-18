@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { dailyData } from '../data/DailyStatic'
 import { monthlyStatic } from '../data/MonthlyStatic'
 import { weeklyData } from '../data/WeeklyStatic'
@@ -27,8 +27,23 @@ ChartJS.register(
 );
 
 
-const ChartData = () => {
+const ChartData = ({datastate}) => {
     const [data, setData] = useState([...monthlyStatic].reverse());
+      
+    useEffect(()=>{
+        if(datastate=="Monthly")
+      {
+        setData([...monthlyStatic].reverse());
+      }
+      else if (datastate=="Weekly")
+      {
+       setData([...weeklyData].reverse());
+      }
+      else
+      {
+        setData([...dailyData].reverse());
+      }
+    },[datastate]);
    
     let dataVER= {
         labels: data.map(elem=>elem.date),
