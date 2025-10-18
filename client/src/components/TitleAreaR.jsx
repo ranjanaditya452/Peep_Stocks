@@ -19,7 +19,7 @@ const TitleAreaR = () => {
       }
   }
   return (
-    <div className=''>
+    <div >
     <div className=''><ChartData datastate={dataState}/></div>
     <button onClick={toggleData} className='bg-amber-500 h-10 w-25 mt-2 hover:cursor-pointer rounded-full'>Toggle Time</button>
    </div>
