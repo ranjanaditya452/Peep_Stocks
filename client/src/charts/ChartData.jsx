@@ -29,19 +29,22 @@ ChartJS.register(
 
 const ChartData = ({datastate}) => {
     const [data, setData] = useState([...monthlyStatic].reverse());
-      
+    const [dataType, setDataType] = useState("Monthly");
     useEffect(()=>{
         if(datastate=="Monthly")
       {
         setData([...monthlyStatic].reverse());
+        setDataType("Monthly");
       }
       else if (datastate=="Weekly")
       {
        setData([...weeklyData].reverse());
+       setDataType("Weekly");
       }
       else
       {
         setData([...dailyData].reverse());
+        setDataType("Daily");
       }
     },[datastate]);
    
@@ -61,7 +64,7 @@ const ChartData = ({datastate}) => {
     }
     return (
   
-        <StaticHome chartData={dataVER}/>
+        <StaticHome chartData={dataVER} chartDataType={dataType}/>
   )
 }
 

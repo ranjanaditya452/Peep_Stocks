@@ -1,13 +1,13 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
-const StaticHome = ({chartData}) => {
+const StaticHome = ({chartData,chartDataType}) => {
   return (
     <Line data={chartData} options={{
                                     plugins: {
             title: {
               display: true,
-              text: "IBM Stock Data Daily"
+              text: `IBM Stock Data ${chartDataType}`
             },
             legend: {
               display: false
