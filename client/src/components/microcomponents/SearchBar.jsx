@@ -5,7 +5,7 @@ const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState("");
   return (
     <>
-    <div className='w-3/4 relative group'>
+    <div className='w-full relative group'>
           <input type="search"
             placeholder="Eg. AAPL"
             value={searchQuery}

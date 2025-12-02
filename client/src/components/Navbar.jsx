@@ -2,9 +2,13 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-   <div className='flex items-center sticky top-0 z-[9999] bg-white gap-20 py-3 pl-16 h-20 grow-none outline-2 outline-red-200'>
+   <div className='sticky top-0 z-[9999] bg-white 
+                   flex items-center justify-between 
+                   px-4 py-3 pl-[7vw] h-16 
+                   md:px-16 md:h-20
+                   outline-2 outline-red-200'>
      <div className=''>Peep-Stocks</div>
-     <div className='flex justify-between gap-5 px-6 '>
+     <div className='px-6 ml-[5rem] hidden md:flex justify-between gap-5'>
       <div>Placeholder&nbsp;1</div>
       <div>Placeholder&nbsp;2</div>
       <div>Placeholder&nbsp;3</div>
