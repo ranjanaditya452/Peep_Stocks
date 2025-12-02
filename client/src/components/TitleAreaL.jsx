@@ -8,7 +8,8 @@ const TitleAreaL = () => {
   return (
     <>
       <div className='flex flex-col gap-10'>
-        <div className='text-8xl w-[10ch]'>Track it. Scroll it. Save it.</div>
+        <div className=' text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl max-w-[12ch] '>
+          Track it. Scroll it. Save it.</div>
         <div className='text-3xl'>The one platform to view all your stocks</div>
         <SearchBar/>
         <DayTray/>

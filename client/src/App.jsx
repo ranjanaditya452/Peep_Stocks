@@ -6,8 +6,8 @@ import { OutlineContext } from './context/OutlineContext'
 const App = () => {
   return (<>
    <OutlineContext.Provider value='outline outline-1 outline-red-500'>
-    <Navbar/>
     <BrowserRouter>
+     <Navbar/>
       <Routes>
         <Route path='/' element={<Homepage/>}/>
       </Routes>

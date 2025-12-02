@@ -4,7 +4,7 @@ const DayTray = () => {
     "flex items-center justify-center gap-2 px-8 py-2 rounded-full h-14 hover:cursor-pointer";
 
   return (
-    <div className={` flex justify-between text-2xl w-3/4`}>
+    <div className={` flex flex-col gap-3 sm:flex-row sm:flex-wrap justify-between text-xl w-full`}>
       <button className={`${buttonStyle} text-white bg-[#3a3546] hover:bg-[#3f3d47]`}>
         <img className="w-8 h-8 " src="/intraday.svg" alt="day" />
         <span className="relative bottom-0.5">Intraday</span>
