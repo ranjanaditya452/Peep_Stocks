@@ -1,7 +1,7 @@
 const DayTray = () => {
   
   const buttonStyle =
-    "flex items-center justify-center gap-2 px-8 py-2 rounded-full h-14 hover:cursor-pointer";
+    "flex items-center justify-center gap-2 px-8 py-2 rounded-full h-14 hover:cursor-pointer sm:px-5";
 
   return (
     <div className={` flex flex-col gap-3 sm:flex-row sm:flex-wrap justify-between text-xl w-full`}>

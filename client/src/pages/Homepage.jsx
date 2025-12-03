@@ -6,7 +6,7 @@ const Homepage = () => {
 
   return (
     <>    
-    <div className='grid md:grid-cols-2 px-18 py-16'>
+    <div className='grid md:grid-cols-2 px-18 py-16 outline-2 outline-red-200'>
       <TitleAreaL/>
       <TitleAreaR/>
     </div>

@@ -2,13 +2,12 @@ import React from 'react'
 
 const PopularTray = () => {
 
- let btnStyle="text-2xl hover:cursor-pointer py-2 px-6 rounded-full border-1 border-[#e7e7e9] hover:bg-[#faf9fb]"
+ let btnStyle="text-xl hover:cursor-pointer py-2 px-6 rounded-full border-1 border-[#e7e7e9] hover:bg-[#faf9fb]"
   return (
-    <div className=' flex gap-5 w-full '>
-        <strong className='text-2xl py-2'>Popular: </strong>
+    <div className='grid grid-cols-2 gap-1.5 md:grid-cols-3'>
         <button className={`${btnStyle}`}>Nvidia</button>
         <button className={`${btnStyle}`}>Adani</button>
-        <button className={`${btnStyle}`}>Google</button>
+        <button className={`${btnStyle} col-span-2 md:col-span-1`}>Meta</button>
     </div>
   )
 }
