@@ -58,7 +58,9 @@ const ChartData = ({datastate}) => {
                     "rgba(75,192,192,1)"
                 ],
                 borderColor:"red",
-                borderWidth:2
+                borderWidth:2,
+                pointRadius: window.innerWidth < 600 ? 0 : 3,    
+                pointHoverRadius: 5
             }
         ]
     }

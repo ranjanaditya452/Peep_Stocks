@@ -1,20 +1,46 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
-const StaticHome = ({chartData,chartDataType}) => {
+const StaticHome = ({ chartData, chartDataType }) => {
+ const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+
+    plugins: {
+      title: {
+        display: true,
+        text: `IBM Stock Data ${chartDataType}`,
+      },
+      legend: {
+        display: false,
+      },
+    },
+    layout: {
+      padding: {
+        left: 8,
+        right: 8,
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          autoSkip: true,
+          maxTicksLimit: 4,        
+        },
+      },
+      y: {
+        ticks: {
+          maxTicksLimit: 5,        
+        },
+      },
+    },
+  }
+
+      
   return (
-    <Line data={chartData} options={{
-                                    plugins: {
-            title: {
-              display: true,
-              text: `IBM Stock Data ${chartDataType}`
-            },
-            legend: {
-              display: false
-            }
-          }
-        }}
-      />
+    <div className='w-full h-64 sm:h-72 md:h-80'>
+      <Line data={chartData} options={options}/>
+    </div>
 
   )
 }

@@ -9,7 +9,7 @@ const Navbar = () => {
                    md:px-16 md:h-20
                    outline-2 outline-red-200'>
      <div className=''>Peep-Stocks</div>
-     <div className='px-6 ml-[5rem] hidden md:flex justify-between gap-5'>
+     <div className='px-6 ml-[5rem] hidden lg:flex justify-between gap-5'>
       <div>Placeholder&nbsp;1</div>
       <div>Placeholder&nbsp;2</div>
       <div>Placeholder&nbsp;3</div>

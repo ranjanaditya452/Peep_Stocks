@@ -1,10 +1,24 @@
 export const monthlyStatic =[
   {
-    date: "2025-10-03",
+    date: "2025-12-02",
+    open: 306.505,
+    close: 301.78,
+    high: 310.4675,
+    low: 301.57
+  },
+  {
+    date: "2025-11-28",
+    open: 308,
+    close: 308.58,
+    high: 324.9,
+    low: 288.07
+  },
+  {
+    date: "2025-10-31",
     open: 280.2,
-    close: 288.37,
-    high: 293.32,
-    low: 280.15
+    close: 307.41,
+    high: 319.35,
+    low: 263.5623
   },
   {
     date: "2025-09-30",
@@ -236,19 +250,5 @@ export const monthlyStatic =[
     close: 134.73,
     high: 147.18,
     low: 132.98
-  },
-  {
-    date: "2022-12-30",
-    open: 149.98,
-    close: 140.89,
-    high: 153.21,
-    low: 137.195
-  },
-  {
-    date: "2022-11-30",
-    open: 138.25,
-    close: 148.9,
-    high: 150.46,
-    low: 133.97
   }
 ]
