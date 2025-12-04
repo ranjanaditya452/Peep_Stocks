@@ -9,7 +9,7 @@ const TitleAreaR = () => {
       {
         setDataState("Weekly");
       }
-      else if(dataState=="Weekly")
+      else if (dataState=="Weekly")
       {
         setDataState("Daily");
       }
