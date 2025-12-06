@@ -1,7 +1,7 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
-const StaticHome = ({ chartData, chartDataType }) => {
+const StaticHome = ({ ticker,chartData, chartDataType }) => {
  const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -9,7 +9,7 @@ const StaticHome = ({ chartData, chartDataType }) => {
     plugins: {
       title: {
         display: true,
-        text: `IBM Stock Data ${chartDataType}`,
+        text: `${ticker} Stock Data ${chartDataType}`,
       },
       legend: {
         display: false,

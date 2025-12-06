@@ -66,7 +66,7 @@ const ChartData = ({datastate}) => {
     }
     return (
   
-        <StaticHome chartData={dataVER} chartDataType={dataType}/>
+        <StaticHome ticker={"IBM"} chartData={dataVER} chartDataType={dataType}/>
   )
 }
 
