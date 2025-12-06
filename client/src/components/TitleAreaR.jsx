@@ -20,12 +20,13 @@ const TitleAreaR = () => {
   }
   return (
     <div className='w-full h-full'>
-    <div className=''><ChartData datastate={dataState}/>
-     <button onClick={toggleData} className='bg-amber-500 h-10 w-25 mt-2 hover:cursor-pointer rounded-full absolute top-1 left-12'>Toggle Time</button>
-    </div>
-    <div>
+    <div className='relative'>
       <ChartData datastate={dataState}/>
-     <button onClick={toggleData} className='bg-amber-500 h-10 w-25 mt-2 hover:cursor-pointer rounded-full absolute top-1 left-12'>Toggle Time</button>
+      <button onClick={toggleData} className='hover:bg-[#efefef] bg-white border-2 border-black text-xs h-6 w-20 hover:cursor-pointer rounded-full absolute top-8 left-12'>Toggle Time</button>
+    </div>
+    <div className='relative'>
+      <ChartData datastate={dataState}/>
+      <button onClick={toggleData} className='hover:bg-[#efefef] bg-white border-2 border-black text-xs h-6 w-20 hover:cursor-pointer rounded-full absolute top-8 left-12'>Toggle Time</button>
     </div>
      
    </div>
