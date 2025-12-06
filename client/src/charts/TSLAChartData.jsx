@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useState } from 'react'
 import { TSLADaily } from '../data/TSLADailyStatic'
 import { TSLAWeekly } from '../data/TSLAWeeklyStatic'
 import { TSLAMonthly } from '../data/TSLAMontlyStatic'
@@ -29,23 +29,29 @@ ChartJS.register(
 );
 
 
-const TSLAChartData = ({ datastate }) => {
+const TSLAChartData = () => {
     const [data, setData] = useState([...TSLAMonthly].reverse());
     const [dataType, setDataType] = useState("Monthly");
-    useEffect(() => {
-        if (datastate == "Monthly") {
-            setData([...TSLAMonthly].reverse());
-            setDataType("Monthly");
-        }
-        else if (datastate == "Weekly") {
+   
+        
+        function toggleData()
+      {
+          if(dataType=="Monthly")
+          { 
             setData([...TSLAWeekly].reverse());
             setDataType("Weekly");
-        }
-        else {
+          }
+          else if (dataType=="Weekly")
+          {
             setData([...TSLADaily].reverse());
             setDataType("Daily");
-        }
-    }, [datastate]);
+          }
+          else
+          {
+            setData([...TSLAMonthly].reverse());
+            setDataType("Monthly");
+          }
+      }
 
     let dataVER = {
         labels: data.map(elem => elem.date),
@@ -65,7 +71,11 @@ const TSLAChartData = ({ datastate }) => {
     }
     return (
 
-        <StaticHome ticker={"TSLA"} chartData={dataVER} chartDataType={dataType} />
+        <div className='relative'>
+            <StaticHome ticker={"TSLA"} chartData={dataVER} chartDataType={dataType} />
+             <button onClick={toggleData} className='hover:bg-[#efefef] bg-white border-2 border-black text-xs h-6 w-20 hover:cursor-pointer rounded-full absolute top-6 left-12'>Toggle Time</button>
+        </div>
+        
     )
 }
 

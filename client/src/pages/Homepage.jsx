@@ -6,7 +6,7 @@ const Homepage = () => {
 
   return (
     <>    
-    <div className='grid gap-2 lg:grid-cols-[4fr_5fr] px-18 py-8 outline-2 outline-red-200'>
+    <div className='grid gap-4 lg:grid-cols-[4fr_5fr] px-18 py-8 outline-2 outline-red-200'>
       <TitleAreaL/>
       <TitleAreaR/>
     </div>
