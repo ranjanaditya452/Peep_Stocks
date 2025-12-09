@@ -2,6 +2,7 @@ package com.Adi.stock_tracker.controller;
 
 
 
+import com.Adi.stock_tracker.dto.CompanyOverview;
 import com.Adi.stock_tracker.dto.FavoriteStockRequest;
 import com.Adi.stock_tracker.dto.StockDailyResponse;
 import com.Adi.stock_tracker.dto.StockMonthlyResponse;
@@ -11,6 +12,7 @@ import com.Adi.stock_tracker.dto.StockWeeklyResponse;
 import com.Adi.stock_tracker.entity.FavoriteStock;
 import com.Adi.stock_tracker.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,5 +72,11 @@ public class StockController {
     {
         final List<StockResponse> list = stockService.getEveryFavoriteStock();
         return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/overviewCompany/{stockSymbol}")
+    public ResponseEntity<CompanyOverview> companyOverview(@PathVariable String stockSymbol)
+    {
+        return new ResponseEntity<CompanyOverview>(stockService.getCompanyOverview(stockSymbol), HttpStatus.OK);
     }
 }

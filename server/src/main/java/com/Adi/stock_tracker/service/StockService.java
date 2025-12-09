@@ -1,10 +1,12 @@
 package com.Adi.stock_tracker.service;
 
 import com.Adi.stock_tracker.client.StockClient;
+import com.Adi.stock_tracker.dto.AlphaVantageCompanyOverviewResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageDailyResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageMonthlyResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageWeeklyResponse;
+import com.Adi.stock_tracker.dto.CompanyOverview;
 import com.Adi.stock_tracker.dto.StockDailyResponse;
 import com.Adi.stock_tracker.dto.StockMonthlyResponse;
 import com.Adi.stock_tracker.dto.StockOverViewResponse;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class StockService {
+
 
     private StockClient stockClient;
     private FavoriteStockRepository favoriteStockRepository;
@@ -133,5 +136,12 @@ public class StockService {
                 );
             }).collect(Collectors.toList());
 
+    }
+
+    public CompanyOverview getCompanyOverview(String stockSymbol) {
+        AlphaVantageCompanyOverviewResponse alphaVantageCompanyOverviewResponse =
+                stockClient.getCompanyOverview(stockSymbol);
+
+        CompanyOverview.
     }
 }

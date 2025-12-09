@@ -77,4 +77,15 @@ public class StockClient {
                 .bodyToMono((AlphaVantageMonthlyResponse.class)).block();
 
     }
+
+    public AlphaVantageCompanyOverviewResponse getCompanyOverview(String stockSymbol)
+    {
+        return webClient.get().uri(uriBuilder -> uriBuilder
+                .queryParam("function","OVERVIEW")
+                .queryParam("symbol",stockSymbol)
+                .queryParam("apikey",vantageAPIKey)
+                .build())
+                .retrieve()
+                .bodyToMono((AlphaVantageCompanyOverviewResponse.class)).block();
+    }
 }
