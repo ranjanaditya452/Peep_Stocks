@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -10,7 +11,7 @@ const Navbar = () => {
                    outline-2 outline-red-200'>
      <div className=''>Peep-Stocks</div>
      <div className='px-6 ml-[5rem] hidden lg:flex justify-between gap-5'>
-      <div>Placeholder&nbsp;1</div>
+      <Link to="/overview">Overview</Link>
       <div>Placeholder&nbsp;2</div>
       <div>Placeholder&nbsp;3</div>
      </div>
