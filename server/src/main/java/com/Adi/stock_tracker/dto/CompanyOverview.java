@@ -6,9 +6,6 @@ import lombok.Builder;
 @Builder
 public record CompanyOverview(
 
-        @JsonProperty("Symbol")
-        String symbol,
-        @JsonProperty("AssetType")
-        String assetType
+
 ) {
 }
