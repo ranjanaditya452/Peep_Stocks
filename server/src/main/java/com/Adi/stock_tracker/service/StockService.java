@@ -6,7 +6,6 @@ import com.Adi.stock_tracker.dto.AlphaVantageDailyResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageMonthlyResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageWeeklyResponse;
-import com.Adi.stock_tracker.dto.CompanyOverview;
 import com.Adi.stock_tracker.dto.StockDailyResponse;
 import com.Adi.stock_tracker.dto.StockMonthlyResponse;
 import com.Adi.stock_tracker.dto.StockOverViewResponse;
@@ -138,10 +137,9 @@ public class StockService {
 
     }
 
-    public CompanyOverview getCompanyOverview(String stockSymbol) {
-        AlphaVantageCompanyOverviewResponse alphaVantageCompanyOverviewResponse =
-                stockClient.getCompanyOverview(stockSymbol);
+    public AlphaVantageCompanyOverviewResponse getCompanyOverview(String stockSymbol) {
 
-        CompanyOverview.
+        return  stockClient.getCompanyOverview(stockSymbol);
+
     }
 }

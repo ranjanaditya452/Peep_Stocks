@@ -2,7 +2,7 @@ package com.Adi.stock_tracker.controller;
 
 
 
-import com.Adi.stock_tracker.dto.CompanyOverview;
+import com.Adi.stock_tracker.dto.AlphaVantageCompanyOverviewResponse;
 import com.Adi.stock_tracker.dto.FavoriteStockRequest;
 import com.Adi.stock_tracker.dto.StockDailyResponse;
 import com.Adi.stock_tracker.dto.StockMonthlyResponse;
@@ -75,8 +75,8 @@ public class StockController {
     }
 
     @GetMapping("/overviewCompany/{stockSymbol}")
-    public ResponseEntity<CompanyOverview> companyOverview(@PathVariable String stockSymbol)
+    public ResponseEntity<AlphaVantageCompanyOverviewResponse> companyOverview(@PathVariable String stockSymbol)
     {
-        return new ResponseEntity<CompanyOverview>(stockService.getCompanyOverview(stockSymbol), HttpStatus.OK);
+        return new ResponseEntity<AlphaVantageCompanyOverviewResponse>(stockService.getCompanyOverview(stockSymbol), HttpStatus.OK);
     }
 }
