@@ -6,6 +6,19 @@ import lombok.Builder;
 @Builder
 public record CompanyOverview(
 
+        String symbol,
+        String assetType,
+        String name,
+        String description,
+        String exchange,
+        String currency,
+        String country,
+        String sector,
+        String officialSite,
+        Long marketCap,
+        Long peRatio,
+        Long fiftyTwoWeekHigh,
+        Long fiftyTwoWeekLow
 
 ) {
 }
