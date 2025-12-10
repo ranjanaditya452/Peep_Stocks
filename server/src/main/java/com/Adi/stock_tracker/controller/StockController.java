@@ -74,7 +74,7 @@ public class StockController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/overviewCompany/{stockSymbol}")
+    @GetMapping("/overview-company/{stockSymbol}")
     public ResponseEntity<AlphaVantageCompanyOverviewResponse> companyOverview(@PathVariable String stockSymbol)
     {
         return new ResponseEntity<AlphaVantageCompanyOverviewResponse>(stockService.getCompanyOverview(stockSymbol), HttpStatus.OK);
