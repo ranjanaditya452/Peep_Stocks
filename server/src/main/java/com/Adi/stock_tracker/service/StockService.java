@@ -6,6 +6,7 @@ import com.Adi.stock_tracker.dto.AlphaVantageDailyResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageMonthlyResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageResponse;
 import com.Adi.stock_tracker.dto.AlphaVantageWeeklyResponse;
+import com.Adi.stock_tracker.dto.CompanyOverviewResponse;
 import com.Adi.stock_tracker.dto.StockDailyResponse;
 import com.Adi.stock_tracker.dto.StockMonthlyResponse;
 import com.Adi.stock_tracker.dto.StockOverViewResponse;
@@ -14,6 +15,7 @@ import com.Adi.stock_tracker.dto.StockWeeklyResponse;
 import com.Adi.stock_tracker.entity.FavoriteStock;
 import com.Adi.stock_tracker.exceptions.FavoriteAlreadyExistsException;
 import com.Adi.stock_tracker.repository.FavoriteStockRepository;
+import com.Adi.stock_tracker.utility.SafeParser;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -137,9 +139,25 @@ public class StockService {
 
     }
 
-    public AlphaVantageCompanyOverviewResponse getCompanyOverview(String stockSymbol) {
+    public CompanyOverviewResponse getCompanyOverview(String stockSymbol) {
 
-        return  stockClient.getCompanyOverview(stockSymbol);
+            AlphaVantageCompanyOverviewResponse alphaVCompanyRes =
+                    stockClient.getCompanyOverview(stockSymbol);
+
+        return CompanyOverviewResponse.builder().symbol(alphaVCompanyRes.symbol())
+                .assetType(alphaVCompanyRes.assetType())
+                .name(alphaVCompanyRes.name())
+                .description(alphaVCompanyRes.description())
+                .exchange(alphaVCompanyRes.exchange())
+                .currency(alphaVCompanyRes.currency())
+                .country(alphaVCompanyRes.country())
+                .sector(alphaVCompanyRes.sector())
+                .officialSite(alphaVCompanyRes.officialSite())
+                .marketCap(SafeParser.safeParseDouble(alphaVCompanyRes.marketCap()))
+                .peRatio(SafeParser.safeParseDouble(alphaVCompanyRes.peRatio()))
+                .fiftyTwoWeekHigh(SafeParser.safeParseDouble(alphaVCompanyRes.fiftyTwoWeekHigh()))
+                .fiftyTwoWeekLow(SafeParser.safeParseDouble(alphaVCompanyRes.fiftyTwoWeekLow()))
+                .build();
 
     }
 }
