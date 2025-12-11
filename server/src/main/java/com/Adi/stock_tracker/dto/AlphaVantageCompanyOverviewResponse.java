@@ -23,13 +23,13 @@ public record AlphaVantageCompanyOverviewResponse(
         @JsonProperty("OfficialSite")
         String officialSite,
         @JsonProperty("MarketCapitalization")
-        Long marketCap,
+        String marketCap,
         @JsonProperty("PERatio")
-        Long peRatio,
+        String peRatio,
         @JsonProperty("52WeekHigh")
-        Long fiftyTwoWeekHigh,
+        String fiftyTwoWeekHigh,
         @JsonProperty("52WeekLow")
-        Long fiftyTwoWeekLow
+        String fiftyTwoWeekLow
 
         ) {
 }
