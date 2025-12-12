@@ -9,7 +9,7 @@ const Navbar = () => {
                    w-full
                    md:px-16 md:h-20
                    outline-2 outline-red-200'>
-     <div className=''>Peep-Stocks</div>
+     <Link to="/">Peep-Stocks</Link>
      <div className='px-6 ml-[5rem] hidden lg:flex justify-between gap-5'>
       <Link to="/overview">Overview</Link>
       <div>Placeholder&nbsp;2</div>
