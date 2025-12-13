@@ -2,7 +2,7 @@ import React from 'react'
 
 const Overview = () => {
   return (
-    <div>
+    <div className=' px-8 py-8 md:px-16'>
       <OverviewMain/>    
     </div>
   )
@@ -10,13 +10,16 @@ const Overview = () => {
 
 const OverviewMain = () =>{
     let logo = "AAPL"
+    console.log(logo)
 
     return (
-      <div>
-        <><img src="/intraday.svg" alt="" />{logo}</>
-        <>
+      <div className='flex'>
+        <div>
+          <img className="w-40 h-40" src="/weekly.svg" alt="week" />
+        </div>
+        <div>
           AAPL
-        </>
+        </div>
       </div>
     )
 }
