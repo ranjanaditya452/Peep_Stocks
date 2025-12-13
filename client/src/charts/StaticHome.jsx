@@ -38,7 +38,7 @@ const StaticHome = ({ ticker,chartData, chartDataType }) => {
 
       
   return (
-    <div className='w-full h-64 sm:h-72 md:h-80'>
+    <div className='relative w-full min-w-0 h-64 sm:h-72 md:h-80'>
       <Line data={chartData} options={options}/>
     </div>
 

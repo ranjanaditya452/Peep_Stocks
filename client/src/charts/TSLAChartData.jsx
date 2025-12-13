@@ -32,26 +32,22 @@ ChartJS.register(
 const TSLAChartData = () => {
     const [data, setData] = useState([...TSLAMonthly].reverse());
     const [dataType, setDataType] = useState("Monthly");
-   
-        
-        function toggleData()
-      {
-          if(dataType=="Monthly")
-          { 
+
+
+    function toggleData() {
+        if (dataType == "Monthly") {
             setData([...TSLAWeekly].reverse());
             setDataType("Weekly");
-          }
-          else if (dataType=="Weekly")
-          {
+        }
+        else if (dataType == "Weekly") {
             setData([...TSLADaily].reverse());
             setDataType("Daily");
-          }
-          else
-          {
+        }
+        else {
             setData([...TSLAMonthly].reverse());
             setDataType("Monthly");
-          }
-      }
+        }
+    }
 
     let dataVER = {
         labels: data.map(elem => elem.date),
@@ -64,18 +60,21 @@ const TSLAChartData = () => {
                 ],
                 borderColor: "red",
                 borderWidth: 2,
-                pointRadius: window.innerWidth < 600 ? 0 : 3,
+                pointRadius: (context) => {
+                    const chartWidth = context.chart.width;
+                    return chartWidth < 600 ? 0 : 3;
+                },
                 pointHoverRadius: 5
             }
         ]
     }
     return (
 
-        <div className='relative'>
+        <div className='relative w-full'>
             <StaticHome ticker={"TSLA"} chartData={dataVER} chartDataType={dataType} />
-             <button onClick={toggleData} className='hover:bg-[#efefef] bg-white border-2 border-black text-xs h-6 w-20 hover:cursor-pointer rounded-full absolute top-6 left-12'>Toggle Time</button>
+            <button onClick={toggleData} className='hover:bg-[#efefef] bg-white border-2 border-black text-xs h-6 w-20 hover:cursor-pointer rounded-full absolute top-6 left-12'>Toggle Time</button>
         </div>
-        
+
     )
 }
 
