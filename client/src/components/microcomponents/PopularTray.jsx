@@ -6,9 +6,9 @@ const PopularTray = () => {
   return (
     <div className='grid grid-cols-2 gap-3 md:grid-cols-3'>
         <button className={`${btnStyle}`}>Nvidia</button>
-        <button className={`${btnStyle}`}>Microsoft</button>
-        <button className={`${btnStyle} col-span-2 md:col-span-1`}>Meta</button>
-        <button className={`${btnStyle}`}>Amazon</button>
+        <button className={`${btnStyle}`}>Meta</button>
+        <button className={`${btnStyle} col-span-2 md:col-span-1`}>Microsoft</button>
+        <button className={`${btnStyle}`}>HP</button>
         <button className={`${btnStyle}`}>Intel</button>
         <button className={`${btnStyle} col-span-2 md:col-span-1`}>Adobe</button>
     </div>

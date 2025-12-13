@@ -5,7 +5,7 @@ import TSLAChartData from '../charts/TSLAChartData';
 const TitleAreaR = () => {
 
   return (
-    <div className='w-full h-full'>
+    <div className='w-full h-full min-w-0 overflow-hidden'>
       <ChartData/>
       <TSLAChartData/>    
    </div>
