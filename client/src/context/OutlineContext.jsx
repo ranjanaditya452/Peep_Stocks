@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-export const OutlineContext = createContext("outline outline-1 outline-red-500");
+export const OutlineContext = createContext("outline-1 outline-blue-500");
 

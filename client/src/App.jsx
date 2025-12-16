@@ -7,7 +7,7 @@ import Layout from './components/Layout'
 
 const App = () => {
   return (<>
-    <OutlineContext.Provider value='outline outline-1 outline-red-500'>
+    <OutlineContext.Provider value='outline-1 outline-red-500'>
       <BrowserRouter>
         <Layout>
           <Routes>
