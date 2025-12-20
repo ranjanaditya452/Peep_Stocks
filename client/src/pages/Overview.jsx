@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { OutlineContext } from '../context/OutlineContext'
-import SearchBar from '../components/microcomponents/SearchBar'
 import ChartData from '../charts/ChartData'
 
 const Overview = () => {
@@ -75,8 +74,8 @@ const DescriptionOverview = () => {
 }
 
 const FiftyTwoWeekHighLow = () => {
-
-    let percentage = (324 - 209) / (324 - 209) * 100;
+    let current = 270;
+    let percentage = (current - 209) / (324 - 209) * 100;
   return (
     <div className='space-y-2'>
       <div className='flex justify-between'>
@@ -86,6 +85,8 @@ const FiftyTwoWeekHighLow = () => {
       <div className='relative h-1  w-full bg-gray-200 rounded'>
         <div className='absolute h-3 w-1 bg-pink-400'
               style={{left: `${percentage}%`}}></div>
+        <div className='absolute top-2'
+             style={{left: `${percentage-1.5}%`}}>{current}</div>
       </div>
     </div>
   )
