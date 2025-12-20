@@ -8,7 +8,7 @@ const Navbar = () => {
                    px-4 py-3 pl-[7vw] h-16
                    w-full
                    md:px-16 md:h-20 md:text-xl
-                   outline-2 outline-red-200'>
+                   border-b border-gray-200'>
      <Link to="/">Peep-Stocks</Link>
      <div className='px-4 ml-20 hidden md:flex justify-between gap-2'>
       <Link to="/overview">Overview</Link>
