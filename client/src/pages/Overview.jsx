@@ -9,6 +9,7 @@ const Overview = () => {
                     px-8 py-8 sm:px-16'>
       <OverviewMain />
       <CardHeader />
+      <FiftyTwoWeekHighLow />
       <DescriptionOverview />
       <ChartData />
     </div>
@@ -70,6 +71,23 @@ const DescriptionOverview = () => {
       </p>
     </div>
 
+  )
+}
+
+const FiftyTwoWeekHighLow = () => {
+
+    let percentage = (324 - 209) / (324 - 209) * 100;
+  return (
+    <div className='space-y-2'>
+      <div className='flex justify-between'>
+        <span>Low 209.2</span>
+        <span>High 324.9</span>
+      </div>
+      <div className='relative h-1  w-full bg-gray-200 rounded'>
+        <div className='absolute h-3 w-1 bg-pink-400'
+              style={{left: `${percentage}%`}}></div>
+      </div>
+    </div>
   )
 }
 
