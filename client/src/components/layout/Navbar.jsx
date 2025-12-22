@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import SearchBar from '../microcomponents/SearchBar'
 
 
 
 const Navbar = () => {
-
+  const [toggledSearchState, setToggledSearchState] = useState(false);
   const location = useLocation();
-
   const isHome = location.pathname === "/";
+  function toggleSearch(){
+    setToggledSearchState(prev => !prev);
+  }
+
   return (
     <div className='sticky top-0 z-9999 bg-white'>
       <div className='flex items-center justify-between
@@ -21,7 +24,11 @@ const Navbar = () => {
           <Link to="/overview">Overview</Link>
           <div>Placeholder&nbsp;2</div>
         </div>
-        <div className='w-4 h-4'><img src="/search.svg" alt="" /></div>
+        {isHome ? null :
+          <div className='relative'>
+            <button onClick={toggleSearch} className='w-4 h-4 hover:cursor-pointer absolute left-1 -top-1.25'>
+              <img src="/search.svg" alt="search" />
+            </button></div>}
         <div className='flex ml-auto gap-2'>
           <div className=''>Contact Me</div>
           <div>Dashboard</div>
@@ -29,7 +36,7 @@ const Navbar = () => {
       </div>
 
       <div className='h-14 bg-white px-4 py-2'>
-        {!isHome && <SearchBar />}
+        {!isHome && toggledSearchState && <SearchBar />}
       </div>
     </div>
   )
