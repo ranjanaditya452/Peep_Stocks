@@ -20,16 +20,21 @@ const Navbar = () => {
                      md:px-16 md:h-20 md:text-xl
                      border-b border-gray-200'>
         <Link to="/">Peep-Stocks</Link>
-        <div className='px-4 ml-20 hidden lg:flex justify-between gap-2'>
+        <div className='px-4  hidden lg:flex justify-between gap-2'>
           <Link to="/overview">Overview</Link>
-          <div>Placeholder&nbsp;2</div>
+          <div>Placeh&nbsp;2</div>
+          <div>Placeh&nbsp;3</div>
         </div>
         {isHome ? null :
           <div className='relative'>
-            <button onClick={toggleSearch} className='w-4 h-4 hover:cursor-pointer absolute left-1 -top-1.25'>
+            <button onClick={toggleSearch} className='w-4 h-4 hover:cursor-pointer
+                                                      flex items-center justify-center
+                                                      relative 
+                                                      sm:w-6 sm:h-6 
+                                                      outline-2 outline-gray-500 rounded-full'>
               <img src="/search.svg" alt="search" />
             </button></div>}
-        <div className='flex ml-auto gap-2'>
+        <div className='flex  gap-2'>
           <div className=''>Contact Me</div>
           <div>Dashboard</div>
         </div>
