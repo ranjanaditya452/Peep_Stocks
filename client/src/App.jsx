@@ -4,6 +4,7 @@ import Homepage from './pages/Homepage'
 import { OutlineContext } from './context/OutlineContext'
 import Overview from './pages/Overview'
 import Layout from './components/Layout'
+import StockNews from './pages/StockNews'
 
 const App = () => {
   return (<>
@@ -13,6 +14,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/overview' element={<Overview/>} />
+            <Route path='/news' element={<StockNews/>}/>
           </Routes>
         </Layout>
       </BrowserRouter>

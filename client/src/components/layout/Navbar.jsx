@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link to="/">Peep-Stocks</Link>
         <div className='px-4  hidden lg:flex justify-between gap-2'>
           <Link to="/overview">Overview</Link>
-          <div>Placeh&nbsp;2</div>
+          <Link to="/news">News</Link>
         </div>
         {!isHome &&
           <div className='hidden lg:block'>
@@ -42,10 +42,16 @@ const Navbar = () => {
           <div>Dashboard</div>
         </div>
       </div>
+      {!isHome && toggledSearchState && <FloatySearchBar/>}
 
-      <div className='h-14 bg-white px-4 py-2'>
-        {!isHome && toggledSearchState && <SearchBar />}
-      </div>
+    </div>
+  )
+}
+
+const FloatySearchBar = () => {
+  return (
+    <div className='h-14 bg-white px-4 py-2'>
+      <SearchBar />
     </div>
   )
 }
