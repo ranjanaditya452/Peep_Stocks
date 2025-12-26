@@ -12,14 +12,28 @@ public class WebClientConfig {
     @Value("${alphaVantage.url}")
     private String alphaVantageUrl;
 
+    @Value("${newsapi.url}")
+    private String newsApiUrl;
+
+    private ExchangeStrategies bufferSizeIncrease ()
+    {
+       return ExchangeStrategies.builder().codecs(configurer -> configurer
+                        .defaultCodecs()
+                        .maxInMemorySize(16 * 1024 * 1024))
+                .build();
+    }
+
+    @Bean
+    public WebClient newsWebClient(WebClient.Builder builder)
+    {
+        return builder.baseUrl(newsApiUrl).exchangeStrategies(bufferSizeIncrease())
+                .build();
+    }
+
     @Bean
     public WebClient webClient(WebClient.Builder builder )
     {
-            return builder.baseUrl(alphaVantageUrl).exchangeStrategies(ExchangeStrategies.builder()
-                            .codecs(configurer -> configurer
-                                    .defaultCodecs()
-                                    .maxInMemorySize(16 * 1024 * 1024))
-                            .build())
+            return builder.baseUrl(alphaVantageUrl).exchangeStrategies(bufferSizeIncrease())
                     .build();
     }
 }
