@@ -23,14 +23,14 @@ public class WebClientConfig {
                 .build();
     }
 
-    @Bean
+    @Bean("newsWebClient")
     public WebClient newsWebClient(WebClient.Builder builder)
     {
         return builder.baseUrl(newsApiUrl).exchangeStrategies(bufferSizeIncrease())
                 .build();
     }
 
-    @Bean
+    @Bean("alphaVantageClient")
     public WebClient webClient(WebClient.Builder builder )
     {
             return builder.baseUrl(alphaVantageUrl).exchangeStrategies(bufferSizeIncrease())
