@@ -18,6 +18,8 @@ public class NewsAPIQueryFactory {
     private final String groupSimilar = "true";
     private final double minMatch = 2.0;
     private final String entityTypes ="equity";
+    private final String sortOrder = "desc";
+    private final String sortBasedOn = "entity_match_score";
 
     private final List<String> domains = List.of
             (
