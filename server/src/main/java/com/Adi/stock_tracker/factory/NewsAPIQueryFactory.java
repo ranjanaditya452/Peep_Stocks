@@ -1,10 +1,7 @@
 package com.Adi.stock_tracker.factory;
 
-import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,13 +11,14 @@ import java.util.List;
 public class NewsAPIQueryFactory {
 
 
-    private final List<String> requiredKeywords = List.of(
-            "earnings", "revenue", "profit", "guidance",
-            "merger", "acquisition", "lawsuit", "regulation", "SEC"
-    );
-    private final List<String> excludedKeywords = List.of(
-            "review", "leak", "rumor", "hands-on", "launch"
-    );
+
+    private final String language = "en";
+    private final String filterEntities = "true";
+    private final String mustHaveEntities = "true";
+    private final String groupSimilar = "true";
+    private final double minMatch = 2.0;
+    private final String entityTypes ="equity";
+
     private final List<String> domains = List.of
             (
                     "reuters.com",
@@ -31,9 +29,7 @@ public class NewsAPIQueryFactory {
                     "finance.yahoo.com"
             );
 
-    private final String language = "en";
-    private final String sortBy = "relevancy";
-    private final int pageSize = 20;
+
 
 
 }

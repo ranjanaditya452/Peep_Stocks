@@ -1,8 +1,7 @@
 package com.Adi.stock_tracker.client;
 
-import com.Adi.stock_tracker.config.WebClientConfig;
+
 import com.Adi.stock_tracker.factory.NewsAPIQueryFactory;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +14,7 @@ public class NewsClient {
     private final NewsAPIQueryFactory newsAPIParameters;
     private final WebClient webClient;
 
-
+    @Autowired
     public NewsClient(@Qualifier("newsWebClient")WebClient webClient,
                       NewsAPIQueryFactory newsAPIParameters)
     {
@@ -25,6 +24,8 @@ public class NewsClient {
 
     @Value("${news.org.API.key}")
     private String newsAPIKey;
+
+
 
 
 
