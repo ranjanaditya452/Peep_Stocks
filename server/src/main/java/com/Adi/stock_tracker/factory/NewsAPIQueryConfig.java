@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 @Getter
-public class NewsAPIQueryFactory {
+public class NewsAPIQueryConfig {
 
 
 

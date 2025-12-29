@@ -1,7 +1,7 @@
 package com.Adi.stock_tracker.client;
 
 
-import com.Adi.stock_tracker.factory.NewsAPIQueryFactory;
+import com.Adi.stock_tracker.factory.NewsAPIQueryConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,12 +11,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 public class NewsClient {
 
-    private final NewsAPIQueryFactory newsAPIParameters;
+    private final NewsAPIQueryConfig newsAPIParameters;
     private final WebClient webClient;
 
     @Autowired
     public NewsClient(@Qualifier("newsWebClient")WebClient webClient,
-                      NewsAPIQueryFactory newsAPIParameters)
+                      NewsAPIQueryConfig newsAPIParameters)
     {
         this.webClient=webClient;
         this.newsAPIParameters=newsAPIParameters;
