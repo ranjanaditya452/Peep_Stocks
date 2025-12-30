@@ -12,6 +12,7 @@ import reactor.core.publisher.Flux;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class NewsClient {
@@ -30,30 +31,31 @@ public class NewsClient {
     @Value("${news.org.API.key}")
     private String newsAPIKey;
 
-    public List<NewsAPIResponse.NewsData> getNewsArticles(String symbol)
+    public List<NewsAPIResponse> getNewsArticles(String symbol)
     {
         List<Integer> pages = List.of(1,2,3,4);
         String wantedDomains = String.join(",",newsAPIParameters.getDomains());
-        return Flux.fromIterable(pages).flatMap(page->webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .queryParam("symbols",symbol)
-                        .queryParam("language",newsAPIParameters.getLanguage())
-                        .queryParam("filter_entities",newsAPIParameters.getFilterEntities())
-                        .queryParam("must_have_entities",newsAPIParameters.getMustHaveEntities())
-                        .queryParam("group_similar",newsAPIParameters.getGroupSimilar())
-                        .queryParam("min_match_score",newsAPIParameters.getMinMatch())
-                        .queryParam("entity_types",newsAPIParameters.getEntityTypes())
-                        .queryParam("sort_order",newsAPIParameters.getSortOrder())
-                        .queryParam("sort",newsAPIParameters.getSortBasedOn())
-                        .queryParam("page",page)
-                        .queryParam("domains",wantedDomains)
-                        .build())
-                .retrieve()
-                .bodyToMono(NewsAPIResponse.class)
-                .map(response->response.newsArticle().values())
-                .onErrorReturn(Collections.emptyList()))
-                .flatMap(Flux::fromIterable)
-                .collectList().block();
+
+       List<NewsAPIResponse> lisst =  Flux.fromIterable(pages).flatMap(page->webClient.get()
+                        .uri(uriBuilder -> uriBuilder
+                                .queryParam("symbols",symbol)
+                                .queryParam("language",newsAPIParameters.getLanguage())
+                                .queryParam("filter_entities",newsAPIParameters.getFilterEntities())
+                                .queryParam("must_have_entities",newsAPIParameters.getMustHaveEntities())
+                                .queryParam("group_similar",newsAPIParameters.getGroupSimilar())
+                                .queryParam("min_match_score",newsAPIParameters.getMinMatch())
+                                .queryParam("entity_types",newsAPIParameters.getEntityTypes())
+                                .queryParam("sort_order",newsAPIParameters.getSortOrder())
+                                .queryParam("sort",newsAPIParameters.getSortBasedOn())
+                                .queryParam("page",page)
+                                .queryParam("domains",wantedDomains)
+                                .queryParam("api_token",newsAPIKey)
+                                .build())
+                        .retrieve()
+                        .bodyToMono(NewsAPIResponse.class)).collectList().block();
+
+            System.out.println(lisst);
+            return lisst;
     }
 
   }

@@ -2,11 +2,12 @@ package com.Adi.stock_tracker.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
 import java.util.Map;
 
 public record NewsAPIResponse(
         @JsonProperty("data")
-        Map<String,NewsData> newsArticle
+        List<NewsData> newsArticles
 
 ) {
     public record NewsData
