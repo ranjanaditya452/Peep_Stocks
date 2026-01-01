@@ -42,15 +42,21 @@ const Navbar = () => {
           <div>Dashboard</div>
         </div>
       </div>
-      {!isHome && toggledSearchState && <FloatySearchBar/>}
+      {!isHome && (<FloatySearchBar open={toggledSearchState}/>)}
 
     </div>
   )
 }
 
-const FloatySearchBar = () => {
+const FloatySearchBar = ({open}) => {
   return (
-    <div className='h-14 bg-white px-4 py-2'>
+    <div className={`h-14 bg-white px-4 py-2 transition-all duration-300 ease-out
+        transform origin-top
+        ${open
+          ? "opacity-100 translate-y-0 scale-y-100"
+          : "opacity-0 -translate-y-2 scale-y-95 pointer-events-none"}
+      `}
+    >
       <SearchBar />
     </div>
   )

@@ -1,17 +1,10 @@
 import React from "react";
 
-const NewsCard = () => {
-  const imgUrl =
-    "https://media.zenfs.com/en/simply_wall_st__316/13f69b02f49f819df1dcc276114d4a99";
-  const articleName =
-    "Why Apple Inc. (NASDAQ:AAPL) Could Be Worth Watching";
-  const articleDescription =
-    "Apple Inc. saw a significant share price rise of over 20% in the past couple of months...";
-  const articleUrl =
-    "https://finance.yahoo.com/news/why-apple-inc-nasdaq-aapl-110039299.html";
+const NewsCard = ({imgUrl,articleName,articleUrl,articleDescription}) => {
+ 
 
   return (
-    <div className="w-66 md:w-74 rounded-lg overflow-hidden border border-neutral-200 bg-white hover:shadow-md transition-shadow">
+    <div className="w-66 md:w-74 lg:w-92 rounded-lg overflow-hidden border border-neutral-200 bg-white hover:shadow-md transition-shadow">
       <div className="h-40 w-full overflow-hidden">
         <img
           src={imgUrl}
@@ -33,7 +26,7 @@ const NewsCard = () => {
           href={articleUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-2 text-xs font-medium text-blue-600 hover:underline self-start"
+          className="mt-2 text-xs font-medium text-blue-600 hover:underline self-start cursor-pointer"
         >
           Read more →
         </a>
