@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TSLADaily } from '../data/TSLADailyStatic'
 import { TSLAWeekly } from '../data/TSLAWeeklyStatic'
 import { TSLAMonthly } from '../data/TSLAMontlyStatic'
-
+import RenderChart from './RenderChart'
 
 import {
     Chart as ChartJS,
@@ -15,7 +15,7 @@ import {
     Tooltip,
     Legend
 } from "chart.js";
-import StaticHome from './StaticHome';
+
 
 ChartJS.register(
     LineElement,
@@ -71,7 +71,7 @@ const TSLAChartData = () => {
     return (
 
         <div className='relative w-full'>
-            <StaticHome ticker={"TSLA"} chartData={dataVER} chartDataType={dataType} />
+            <RenderChart ticker={"TSLA"} chartData={dataVER} chartDataType={dataType} />
             <button onClick={toggleData} className='hover:bg-[#efefef] bg-white border-2 border-black text-xs h-6 w-20 hover:cursor-pointer rounded-full absolute top-6 left-12'>Toggle Time</button>
         </div>
 

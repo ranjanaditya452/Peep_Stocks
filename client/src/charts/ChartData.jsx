@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { dailyData } from '../data/DailyStatic'
 import { monthlyStatic } from '../data/MonthlyStatic'
 import { weeklyData } from '../data/WeeklyStatic'
-import StaticHome from './StaticHome'
+import RenderChart from './RenderChart'
 import {
   Chart as ChartJS,
   LineElement,
@@ -14,6 +14,7 @@ import {
   Tooltip,
   Legend
 } from "chart.js";
+
 
 ChartJS.register(
   LineElement,
@@ -65,7 +66,7 @@ const ChartData = () => {
   }
   return (
     <div className='relative w-full'>
-      <StaticHome ticker={"IBM"} chartData={dataVER} chartDataType={dataType} />
+      <RenderChart ticker={"IBM"} chartData={dataVER} chartDataType={dataType} />
       <button onClick={toggleData} className='hover:bg-[#efefef] bg-white border-2 border-black text-xs h-6 w-20 hover:cursor-pointer rounded-full absolute top-6 left-12'>Toggle Time</button>
     </div>
   )

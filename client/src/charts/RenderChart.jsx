@@ -1,7 +1,7 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
-const StaticHome = ({ ticker,chartData, chartDataType }) => {
+const RenderChart = ({ ticker,chartData, chartDataType }) => {
  const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -45,4 +45,4 @@ const StaticHome = ({ ticker,chartData, chartDataType }) => {
   )
 }
 
-export default StaticHome
+export default RenderChart
