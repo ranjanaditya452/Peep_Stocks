@@ -61,6 +61,12 @@ public class StockService {
     public List<StockDailyResponse> getStockDaily(String stockSymbol, int days) {
         final AlphaVantageDailyResponse alphaVantageDailyResponse =stockClient.getDailyStock(stockSymbol);
 
+        if (alphaVantageDailyResponse.timesSeries() == null) {
+            throw new IllegalStateException(
+                    "Daily time series missing for symbol: " + stockSymbol
+            );
+        }
+
         return alphaVantageDailyResponse.timesSeries().entrySet().stream()
                 .limit(days)
                 .map(entry->
@@ -72,8 +78,7 @@ public class StockService {
                             Double.parseDouble(daily.open()),
                             Double.parseDouble(daily.close()),
                             Double.parseDouble(daily.high()),
-                            Double.parseDouble(daily.low()),
-                            Long.parseLong(daily.volume())
+                            Double.parseDouble(daily.low())
                     );
                 })
                 .collect(Collectors.toList());
@@ -105,6 +110,12 @@ public class StockService {
     public List<StockWeeklyResponse> getStockWeeklyService(String stockSymbol, int weeks) {
         final AlphaVantageWeeklyResponse alphaVantageWeeklyResponse = stockClient.getWeeklyStocks(stockSymbol);
 
+        if (alphaVantageWeeklyResponse.timesSeriesW() == null) {
+            throw new IllegalStateException(
+                    "Weekly time series missing for symbol: " + stockSymbol
+            );
+        }
+
         return alphaVantageWeeklyResponse.timesSeriesW().entrySet().stream().limit(weeks).map( weekly-> {
                     String date = weekly.getKey();
                     var data = weekly.getValue();
@@ -122,7 +133,13 @@ public class StockService {
     public List<StockMonthlyResponse> getStockMonthlyService(String stockSymbol, int months) {
     AlphaVantageMonthlyResponse alphaVantageMonthlyResponse= stockClient.getMonthlyStocks(stockSymbol);
 
-    return alphaVantageMonthlyResponse.monthlySeries().entrySet().stream().limit(months)
+        if (alphaVantageMonthlyResponse.monthlySeries() == null) {
+            throw new IllegalStateException(
+                    "Monthly time series missing for symbol: " + stockSymbol
+            );
+        }
+
+        return alphaVantageMonthlyResponse.monthlySeries().entrySet().stream().limit(months)
             .map(entry->
             {
                 var date = entry.getKey();
