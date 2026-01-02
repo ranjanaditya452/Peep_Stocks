@@ -28,8 +28,8 @@ import java.util.stream.Collectors;
 public class StockService {
 
 
-    private StockClient stockClient;
-    private FavoriteStockRepository favoriteStockRepository;
+    private final StockClient stockClient;
+    private final FavoriteStockRepository favoriteStockRepository;
 
     @Autowired
     public StockService(final StockClient stockClient,
