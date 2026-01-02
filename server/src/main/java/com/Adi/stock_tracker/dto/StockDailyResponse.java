@@ -8,7 +8,6 @@ public record StockDailyResponse(
         double open,
         double close,
         double high,
-        double low,
-        long volume
+        double low
 ) {
 }

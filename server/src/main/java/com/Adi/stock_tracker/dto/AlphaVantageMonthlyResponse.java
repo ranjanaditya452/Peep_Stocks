@@ -20,7 +20,7 @@ public record AlphaVantageMonthlyResponse(
             String low,
             @JsonProperty("4. close")
             String close,
-            @JsonProperty("5. volume")
+            @JsonProperty("6. volume")
             String volume
     ){}
     public record MetaData(

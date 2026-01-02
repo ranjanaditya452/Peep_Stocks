@@ -22,7 +22,7 @@ public record AlphaVantageDailyResponse(
         String low,
         @JsonProperty("4. close")
         String close,
-        @JsonProperty("5. volume")
+        @JsonProperty("6. volume")
         String volume
     )    {}
 
