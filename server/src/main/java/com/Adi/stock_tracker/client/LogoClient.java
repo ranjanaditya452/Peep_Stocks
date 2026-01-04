@@ -20,10 +20,11 @@ public class LogoClient {
 
     public  ApiNinjaLogoResponse getLogoFromApi(String symbol)
     {
-        return webClient.get().uri(uriBuilder -> uriBuilder.queryParam("name",symbol)
+        return webClient.get().uri(uriBuilder -> uriBuilder.queryParam("ticker",symbol)
                 .build())
                 .retrieve()
-                .bodyToMono(ApiNinjaLogoResponse.class)
+                .bodyToFlux(ApiNinjaLogoResponse.class)
+                .next()
                 .block();
     }
 }
