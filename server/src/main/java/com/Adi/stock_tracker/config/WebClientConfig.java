@@ -15,11 +15,26 @@ public class WebClientConfig {
     @Value("${newsapi.url}")
     private String newsApiUrl;
 
+    //logo api url
+    @Value("${api-ninja.logo.url}")
+    private String apiNinjaLogoUrl;
+
+    @Value("${api-ninja.logo.api-key}")
+    private String logoApiKey;
+
     private ExchangeStrategies bufferSizeIncrease ()
     {
        return ExchangeStrategies.builder().codecs(configurer -> configurer
                         .defaultCodecs()
                         .maxInMemorySize(16 * 1024 * 1024))
+                .build();
+    }
+
+    @Bean("logoWebClient")
+    public WebClient logoWebClient(WebClient.Builder builder)
+    {
+        return builder.baseUrl(apiNinjaLogoUrl).exchangeStrategies(bufferSizeIncrease())
+                .defaultHeader("X-Api-Key",logoApiKey)
                 .build();
     }
 
