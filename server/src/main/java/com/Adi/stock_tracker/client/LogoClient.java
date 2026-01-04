@@ -9,11 +9,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 public class LogoClient {
 
-    @Qualifier("logoWebClient")
+
     private final WebClient webClient;
 
     @Autowired
-    public LogoClient(final WebClient webClient)
+
+    public LogoClient(@Qualifier("logoWebClient") WebClient webClient)
     {
         this.webClient=webClient;
     }
