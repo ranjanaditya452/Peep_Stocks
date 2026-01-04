@@ -13,7 +13,6 @@ public class LogoClient {
     private final WebClient webClient;
 
     @Autowired
-
     public LogoClient(@Qualifier("logoWebClient") WebClient webClient)
     {
         this.webClient=webClient;
@@ -21,7 +20,7 @@ public class LogoClient {
 
     public  ApiNinjaLogoResponse getLogoFromApi(String symbol)
     {
-        return webClient.get().uri(uriBuilder -> uriBuilder.queryParam("logo",symbol)
+        return webClient.get().uri(uriBuilder -> uriBuilder.queryParam("name",symbol)
                 .build())
                 .retrieve()
                 .bodyToMono(ApiNinjaLogoResponse.class)
