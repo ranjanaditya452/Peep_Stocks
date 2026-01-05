@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-import { dailyData } from '../data/DailyStatic'
-import { monthlyStatic } from '../data/MonthlyStatic'
-import { weeklyData } from '../data/WeeklyStatic'
 import RenderChart from './RenderChart'
 import {
   Chart as ChartJS,
@@ -27,8 +24,8 @@ ChartJS.register(
   Legend
 );
 
-const ChartData = () => {
-  const [data, setData] = useState([...monthlyStatic].reverse());
+const ChartData = ({dailyData,monthlyData,weeklyData}) => {
+  const [data, setData] = useState([...monthlyData].reverse());
   const [dataType, setDataType] = useState("Monthly");
 
   function toggleData() {
@@ -41,7 +38,7 @@ const ChartData = () => {
       setDataType("Daily");
     }
     else {
-      setData([...monthlyStatic].reverse());
+      setData([...monthlyData].reverse());
       setDataType("Monthly");
     }
   }
