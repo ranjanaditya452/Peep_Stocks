@@ -1,6 +1,6 @@
 import React from 'react'
-import TitleAreaL from '../components/TitleAreaL'
-import TitleAreaR from '../components/TitleAreaR'
+import HomepageHero from '../components/HomepageHero'
+import HomepageCharts from '../components/HomepageCharts'
 
 const Homepage = () => {
 
@@ -10,8 +10,8 @@ const Homepage = () => {
                     lg:grid-cols-[4fr_5fr] 
                     2xl:grid-cols-1
                     px-8 py-8 md:px-16'>
-      <TitleAreaL/>
-      <TitleAreaR/>
+      <HomepageHero/>
+      <HomepageCharts/>
     </div>
     </>
   )
