@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ChartData from '../charts/ChartData'
 import CompanyHeader from '../components/CompanyHeader'
+import StockContext from '../context/context-creation/StockContext';
 
 const Overview = () => {
+  const { dailyData, weeklyData, monthlyData, loading, error, symbol } = useContext(StockContext);
+
+  if (error) return (<div className='flex items-center justify-center'>
+    <p>Error : {error}</p>
+  </div>);
+
   return (
     <div className='flex flex-col gap-5
                     px-8 py-8 sm:px-16'>
@@ -10,7 +17,11 @@ const Overview = () => {
       <CardHeader />
       <FiftyTwoWeekHighLow />
       <DescriptionOverview />
-      <ChartData />
+      <ChartData dailyData={dailyData}
+        weeklyData={weeklyData}
+        monthlyData={monthlyData}
+        symbol={symbol}
+        isLoading={loading} />      
     </div>
   )
 }
