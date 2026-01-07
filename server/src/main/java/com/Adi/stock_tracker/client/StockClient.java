@@ -10,7 +10,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 public class StockClient {
 
-    @Qualifier("alphaVantageClient")
     private final WebClient webClient;
 
     @Autowired
@@ -21,6 +20,9 @@ public class StockClient {
 
     @Value("${alpha.vantage.API.key}")
     private String vantageAPIKey;
+    //Hitting rate limits per second on a single key
+    @Value("${alpha.vantage.API.key.2}")
+    private String vantageAPIKey2;
 
     public AlphaVantageResponse getStockQuote(String stockSymbol) {
 
@@ -63,7 +65,7 @@ public class StockClient {
         return webClient.get().uri(uriBuilder -> uriBuilder
                         .queryParam("function","TIME_SERIES_WEEKLY_ADJUSTED")
                         .queryParam("symbol",stockSymbol)
-                        .queryParam("apikey",vantageAPIKey)
+                        .queryParam("apikey",vantageAPIKey2)
                         .build())
                         .retrieve()
                         .bodyToMono(AlphaVantageWeeklyResponse.class)
@@ -76,7 +78,7 @@ public class StockClient {
         return webClient.get().uri(uriBuilder -> uriBuilder
                 .queryParam("function","TIME_SERIES_MONTHLY_ADJUSTED")
                 .queryParam("symbol",stockSymbol)
-                .queryParam("apikey",vantageAPIKey)
+                .queryParam("apikey",vantageAPIKey2)
                 .build())
                 .retrieve()
                 .bodyToMono((AlphaVantageMonthlyResponse.class)).block();
