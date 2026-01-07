@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RenderChart from './RenderChart'
 import {
   Chart as ChartJS,
@@ -24,21 +24,30 @@ ChartJS.register(
   Legend
 );
 
-const ChartData = ({dailyData,monthlyData,weeklyData}) => {
-  const [data, setData] = useState([...monthlyData].reverse());
-  const [dataType, setDataType] = useState("Monthly");
+const ChartData = ({dailyData,monthlyData,weeklyData,symbol,isLoading}) => {
+  const [data, setData] = useState([]);
+  const [dataType, setDataType] = useState("Daily");
+
+  useEffect(()=>{
+      if (dataType == "Monthly") {
+      setData([...monthlyData].reverse());
+    }
+    else if (dataType == "Weekly") {
+      setData([...weeklyData].reverse());
+    }
+    else {
+      setData([...dailyData].reverse());
+    }
+  },[dailyData,monthlyData,weeklyData,dataType]);
 
   function toggleData() {
     if (dataType == "Monthly") {
-      setData([...weeklyData].reverse());
       setDataType("Weekly");
     }
     else if (dataType == "Weekly") {
-      setData([...dailyData].reverse());
       setDataType("Daily");
     }
     else {
-      setData([...monthlyData].reverse());
       setDataType("Monthly");
     }
   }
@@ -63,7 +72,7 @@ const ChartData = ({dailyData,monthlyData,weeklyData}) => {
   }
   return (
     <div className='relative w-full'>
-      <RenderChart ticker={"IBM"} chartData={dataVER} chartDataType={dataType} />
+      <RenderChart ticker={`${symbol}`} chartData={dataVER} chartDataType={dataType} />
       <button onClick={toggleData} className='hover:bg-[#efefef] bg-white border-2 border-black text-xs h-6 w-20 hover:cursor-pointer rounded-full absolute top-6 left-12'>Toggle Time</button>
     </div>
   )
