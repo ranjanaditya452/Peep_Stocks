@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import SearchBar from '../microcomponents/SearchBar'
 
-
-
 const Navbar = () => {
   const [toggledSearchState, setToggledSearchState] = useState(false);
   const location = useLocation();
@@ -24,10 +22,7 @@ const Navbar = () => {
           <Link to="/overview">Overview</Link>
           <Link to="/news">News</Link>
         </div>
-        {!isHome &&
-          <div className='hidden lg:block'>
-            <SearchBar />
-          </div>}
+        {!isHome && <div className='hidden lg:block'> <SearchBar/>  </div>}
         {isHome ? null :
           <div className='relative'>
             <button onClick={toggleSearch} className='w-4 h-4 hover:cursor-pointer
@@ -38,7 +33,7 @@ const Navbar = () => {
               <img src="/search.svg" alt="search" />
             </button></div>}
         <div className='flex  gap-2'>
-          <div className=''>Contact Me</div>
+          <div>Contact Me</div>
           <div>Dashboard</div>
         </div>
       </div>
@@ -48,18 +43,19 @@ const Navbar = () => {
   )
 }
 
-const FloatySearchBar = ({open}) => {
+const FloatySearchBar = ({ open }) => {
   return (
-    <div className={`h-14 bg-white px-4 py-2 transition-all duration-300 ease-out
-        transform origin-top
-        ${open
-          ? "opacity-100 translate-y-0 scale-y-100"
-          : "opacity-0 -translate-y-2 scale-y-95 pointer-events-none"}
-      `}
+    <div
+      className={`bg-white px-4 w-full transition-all duration-300 ease-out 
+        transform origin-top lg:hidden overflow-hidden
+        ${open 
+          ? "h-14 opacity-100 translate-y-0 py-2"   
+          : "h-0 opacity-0 -translate-y-2 py-0 pointer-events-none" 
+        }`}
     >
       <SearchBar />
     </div>
-  )
-}
+  );
+};
 
 export default Navbar
