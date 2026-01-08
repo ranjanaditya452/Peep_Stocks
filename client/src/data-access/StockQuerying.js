@@ -26,3 +26,7 @@ export function fetchWeeklyStocks(symbol) {
 export function fetchMonthlyStocks(symbol) {
     return fetchJson(`${BASE_URL}/api/v1/stocks/${encodeURIComponent(symbol)}/monthly`);
 }
+
+export function fetchCompanyOverview(symbol){
+    return fetchJson(`${BASE_URL}/api/v1/stocks/overview-company/${encodeURIComponent(symbol)}`);
+}
