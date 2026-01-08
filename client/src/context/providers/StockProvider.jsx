@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchDailyStocks, fetchMonthlyStocks, fetchWeeklyStocks } from '../../data-access/Querying';
+import { fetchDailyStocks, fetchMonthlyStocks, fetchWeeklyStocks } from '../../data-access/StockQuerying';
 import StockContext from '../context-creation/StockContext';
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
