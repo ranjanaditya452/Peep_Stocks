@@ -4,11 +4,9 @@ import CompanyHeader from '../components/CompanyHeader'
 import StockContext from '../context/context-creation/StockContext';
 
 const Overview = () => {
-  const { dailyData, weeklyData, monthlyData, loading, error, symbol } = useContext(StockContext);
+  
 
-  if (error) return (<div className='flex items-center justify-center'>
-    <p>Error : {error}</p>
-  </div>);
+ 
 
   return (
     <div className='flex flex-col gap-5
@@ -17,12 +15,8 @@ const Overview = () => {
       <CardHeader />
       <FiftyTwoWeekHighLow />
       <DescriptionOverview />
-      <ChartData dailyData={dailyData}
-        weeklyData={weeklyData}
-        monthlyData={monthlyData}
-        symbol={symbol}
-        isLoading={loading} />      
-    </div>
+      <OverviewChartArea/>
+      </div>
   )
 }
 
@@ -84,4 +78,17 @@ const FiftyTwoWeekHighLow = () => {
   )
 }
 
+const OverviewChartArea = ()=>{
+  const { dailyData, weeklyData, monthlyData, loading, error, symbol } = useContext(StockContext); 
+  if (error) return (<div className='flex items-center justify-center'>
+    <p>Error : {error}</p>
+  </div>);
+return(
+  <ChartData dailyData={dailyData}
+        weeklyData={weeklyData}
+        monthlyData={monthlyData}
+        symbol={symbol}
+        isLoading={loading} />
+)
+}
 export default Overview
