@@ -48,6 +48,9 @@ public class StockService {
                 .symbol(alphaVantageResponse.globalQuote().symbol())
                 .price(Double.parseDouble(alphaVantageResponse.globalQuote().price()))
                 .lastUpdated(alphaVantageResponse.globalQuote().latestDay())
+                .closePrice(alphaVantageResponse.globalQuote().closePrice())
+                .change(alphaVantageResponse.globalQuote().change())
+                .changePercent(alphaVantageResponse.globalQuote().changePercent())
                 .build();
     }
 
