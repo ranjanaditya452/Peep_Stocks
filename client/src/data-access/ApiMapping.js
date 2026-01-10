@@ -32,4 +32,13 @@ export function mapStockStatus(api)
         changePercent:api.changePercent,
     }
 }
+
+export function mapStockLogo(api)
+{
+    return{
+        name:api.name,
+        image:api.image,
+        ticker:api.ticker,
+    }
+}
       
