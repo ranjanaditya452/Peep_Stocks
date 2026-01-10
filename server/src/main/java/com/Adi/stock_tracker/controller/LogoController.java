@@ -18,7 +18,7 @@ public class LogoController {
     }
 
 
-    @GetMapping("/logo/{symbol}")
+    @GetMapping("/{symbol}")
     public ApiNinjaLogoResponse getTickerImage(@PathVariable String symbol)
     {
         return logoService.getTickerLogo(symbol);
