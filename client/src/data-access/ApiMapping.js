@@ -27,6 +27,9 @@ export function mapStockStatus(api)
         symbol:api.symbol,
         price:api.price,
         lastUpdated:api.lastUpdated,
+        closePrice:api.closePrice,
+        change:api.change,
+        changePercent:api.changePercent,
     }
 }
       
