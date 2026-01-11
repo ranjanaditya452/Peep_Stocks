@@ -5,18 +5,21 @@ import Overview from './pages/Overview'
 import Layout from './components/Layout'
 import StockNews from './pages/StockNews'
 import StockProvider from './context/providers/StockProvider'
+import StockStatusProvider from './context/providers/StockStatusProvider'
 
 const App = () => {
   return (<>
     <BrowserRouter>
       <StockProvider>
-        <Layout>
-          <Routes>
-            <Route path='/' element={<Homepage />} />
-            <Route path='/overview' element={<Overview />} />
-            <Route path='/news' element={<StockNews />} />
-          </Routes>
-        </Layout>
+        <StockStatusProvider>
+          <Layout>
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/overview' element={<Overview />} />
+              <Route path='/news' element={<StockNews />} />
+            </Routes>
+          </Layout>
+        </StockStatusProvider>
       </StockProvider>
     </BrowserRouter>
   </>
