@@ -15,10 +15,10 @@ public record CompanyOverviewResponse(
         String country,
         String sector,
         String officialSite,
-        Double marketCap,
-        Double peRatio,
-        Double fiftyTwoWeekHigh,
-        Double fiftyTwoWeekLow
+        double marketCap,
+        double peRatio,
+        double fiftyTwoWeekHigh,
+        double fiftyTwoWeekLow
 
 ) {
 }

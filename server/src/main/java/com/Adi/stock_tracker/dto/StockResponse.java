@@ -8,7 +8,7 @@ public record StockResponse(
         String symbol,
         double price,
         String lastUpdated,
-        String closePrice,
-        String change,
+        double closePrice,
+        double change,
         String changePercent
 ) {}
