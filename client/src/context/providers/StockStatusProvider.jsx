@@ -5,18 +5,22 @@ import StockStatusContext from '../context-creation/StockStatusContext';
 
 const StockStatusProvider = ({children}) => {
     const [stockStatus, setStockStatus] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const { symbol } = useContext(StockContext);
-
+    
     useEffect(() => {
         setLoading(true);
-        if (symbol) {
-            fetchStockStatus(symbol).then(setStockStatus).catch(
-                err => setError(err.message));
-        }
-        setLoading(false);
+        setError(null);
+        if (!symbol) return;
+        
+            fetchStockStatus(symbol)
+                .then(setStockStatus)
+                .catch(err => setError(err.message))
+                .finally(() => {
+                setLoading(false) });
+  
     }, [symbol]);
     return (
         <StockStatusContext.Provider value={{stockStatus,loading,error}}>
