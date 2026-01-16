@@ -23,6 +23,8 @@ public class StockClient {
     //Hitting rate limits per second on a single key
     @Value("${alpha.vantage.API.key.2}")
     private String vantageAPIKey2;
+    @Value("${alpha.vantage.API.key.3}")
+    private String vantageAPIKey3;
 
     public AlphaVantageResponse getStockQuote(String stockSymbol) {
 
@@ -41,7 +43,7 @@ public class StockClient {
         return webClient.get().uri(uriBuilder -> uriBuilder
                 .queryParam("function","OVERVIEW")
                 .queryParam("symbol",stockSymbol)
-                .queryParam("apikey",vantageAPIKey)
+                .queryParam("apikey",vantageAPIKey3)
                 .build())
                 .retrieve()
                 .bodyToMono(StockOverViewResponse.class)
@@ -53,7 +55,7 @@ public class StockClient {
         return webClient.get().uri(uriBuilder -> uriBuilder
                 .queryParam("function","TIME_SERIES_DAILY")
                 .queryParam("symbol",stockSymbol)
-                .queryParam("apikey",vantageAPIKey)
+                .queryParam("apikey",vantageAPIKey3)
                 .build())
                 .retrieve()
                 .bodyToMono(AlphaVantageDailyResponse.class)
@@ -90,7 +92,7 @@ public class StockClient {
         return webClient.get().uri(uriBuilder -> uriBuilder
                 .queryParam("function","OVERVIEW")
                 .queryParam("symbol",stockSymbol)
-                .queryParam("apikey",vantageAPIKey)
+                .queryParam("apikey",vantageAPIKey3)
                 .build())
                 .retrieve()
                 .bodyToMono((AlphaVantageCompanyOverviewResponse.class)).block();
