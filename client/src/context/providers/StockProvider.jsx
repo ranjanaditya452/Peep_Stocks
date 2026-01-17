@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchDailyStocks, fetchMonthlyStocks, fetchWeeklyStocks } from '../../data-access/StockQuerying';
 import StockContext from '../context-creation/StockContext';
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const StockProvider = ({ children }) => {
   const [dailyData, setDailyData] = useState(null);
@@ -20,16 +19,13 @@ const StockProvider = ({ children }) => {
         setError(null);
 
         const dailyFetchedData = await fetchDailyStocks(symbol);
-        setDailyData(dailyFetchedData);
-        await wait(700);
+        setDailyData(dailyFetchedData);     
 
         const weeklyFetchedData = await fetchWeeklyStocks(symbol);
         setWeeklyData(weeklyFetchedData);
-        await wait(700);
 
         const monthlyFetchedData = await fetchMonthlyStocks(symbol);
         setMonthlyData(monthlyFetchedData);
-        await wait(700);
 
       }
       catch (err) {
