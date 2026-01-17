@@ -36,7 +36,7 @@ public class NewsClient {
         List<Integer> pages = List.of(1,2,3,4);
         String wantedDomains = String.join(",",newsAPIParameters.getDomains());
 
-       List<NewsAPIResponse> lisst =  Flux.fromIterable(pages).flatMap(page->webClient.get()
+        return  Flux.fromIterable(pages).flatMap(page->webClient.get()
                         .uri(uriBuilder -> uriBuilder
                                 .queryParam("symbols",symbol)
                                 .queryParam("language",newsAPIParameters.getLanguage())
@@ -54,8 +54,8 @@ public class NewsClient {
                         .retrieve()
                         .bodyToMono(NewsAPIResponse.class)).collectList().block();
 
-            System.out.println(lisst);
-            return lisst;
+
+
     }
 
   }
